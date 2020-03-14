@@ -10,7 +10,18 @@ void main() => runApp(
       ),
     );
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    note();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     w = MediaQuery.of(context).size.width;
@@ -22,9 +33,8 @@ class MyApp extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            showDialog(context: context,builder: (_)=>NoteDialog());
+            showDialog(context: context, builder: (_) => NoteDialog());
             print("tapped");
-
           },
         ),
         bottomNavigationBar: BottomAppBar(
