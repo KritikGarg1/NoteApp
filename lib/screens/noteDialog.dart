@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:sqlite/main.dart';
 import 'note.dart';
 import 'package:sqlite/models/noteModel.dart';
 import 'package:sqlite/utils/db_helper.dart';
@@ -15,6 +15,12 @@ String name;
 int curUserId;
 int color;
 Future<List<Note>> notes;
+var dbHelper;
+
+refresh() {
+  dbHelper = DBHelper();
+  notes = dbHelper.getNotes();
+}
 
 TextEditingController ctrl = TextEditingController();
 
@@ -26,7 +32,6 @@ class NoteDialog extends StatefulWidget {
 class NoteDialogState extends State<NoteDialog> {
   var dbHelper;
   bool isUpdating;
-
 
   @override
   void initState() {
@@ -68,7 +73,12 @@ class NoteDialogState extends State<NoteDialog> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       contentPadding: EdgeInsets.all(30),
       backgroundColor: x,
-      title: Text("Note"),
+      title: Row(
+        children: <Widget>[
+          Text("Note"),
+
+        ],
+      ),
       content: Container(
           width: w * 0.7,
           child: TextFormField(
