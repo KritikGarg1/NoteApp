@@ -1,4 +1,4 @@
-# sqlite
+# NoteApp
 Note-taking application with smooth UI/UX using sqflite database library and staggered gridview that adjusts to the size of the text.
 
 ## Getting Started
